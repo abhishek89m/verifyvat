@@ -35,6 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
           this.searchResult = result;
           this.errorMessage = '';
         }, (e: HttpErrorResponse) => {
+          this.searchResult = undefined;
           this.errorTitle = e.statusText;
           this.errorMessage = e.error.error;
         })
