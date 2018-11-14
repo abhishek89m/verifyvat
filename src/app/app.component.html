@@ -1,0 +1,53 @@
+<div class="vv-container container">
+  <div class="row">
+    <mat-card class="col col-12">
+      <mat-card-title>Verify VAT Number</mat-card-title>
+      <mat-card-subtitle>Verify VAT number by searching it in the following field</mat-card-subtitle>
+      <mat-card-content>
+        <mat-form-field appearance="standard" class="col col-12 col-md-6">
+          <mat-label>VAT number</mat-label>
+          <input matInput placeholder="Enter VAT number" [(ngModel)]="searchValue" required>
+          <mat-icon matSuffix>search</mat-icon>
+          <mat-hint>Enter VAT number to be verified. E.g. 'EE999999999'</mat-hint>
+        </mat-form-field>
+        <button mat-flat-button color="primary" class="vv-search-button col col-12 col-md-2" [disabled]="!this.searchValue"
+          (click)="searchVat()">Search</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="vv-margin-top row" *ngIf="errorMessage">
+    <mat-card class="col col-12">
+      <mat-card-title>
+        <mat-error>Error - {{errorTitle}}</mat-error>
+      </mat-card-title>
+      <mat-card-content>
+        <mat-error>{{errorMessage}}</mat-error>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="vv-margin-top row" *ngIf="searchResult">
+    <mat-card class="col col-12">
+      <mat-card-title>Search Result</mat-card-title>
+      <mat-card-subtitle>Search result for VAT number {{searchResult.CountryCode}}&nbsp;{{searchResult.VATNumber}}</mat-card-subtitle>
+      <mat-card-content>
+        <div class="row">
+          <mat-label class="col col-12 col-md-3">Requested Date :</mat-label>
+          <mat-label class="vv-result-value col col-12 col-md-9">{{searchResult.RequestDate}}</mat-label>
+        </div>
+        <div class="vv-margin-top row">
+          <mat-label class="col col-12 col-md-3">Validity :</mat-label>
+          <mat-label class="vv-result-value col col-12 col-md-9" *ngIf="searchResult.Valid">Valid</mat-label>
+          <mat-error class="col col-12 col-md-9" *ngIf="!searchResult.Valid">Invalid</mat-error>
+        </div>
+        <div class="vv-margin-top row" *ngIf="searchResult.Valid">
+          <mat-label class="col col-12 col-md-3">Name :</mat-label>
+          <mat-label class="vv-result-value col col-12 col-md-9">{{searchResult.Name}}</mat-label>
+        </div>
+        <div class="vv-margin-top row" *ngIf="searchResult.Valid">
+          <mat-label class="col col-12 col-md-3">Validity :</mat-label>
+          <mat-label class="vv-result-value col col-12 col-md-9">{{searchResult.Address}}</mat-label>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

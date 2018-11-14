@@ -1,0 +1,27 @@
+.vv-container {
+  margin-top: 50px;
+}
+
+.vv-container .vv-search-button {
+  margin-top: 20px;
+}
+
+.vv-container .vv-margin-top {
+  margin-top: 20px;
+}
+
+.vv-container .vv-result-value {
+  font-size: 1.2em;
+  line-height: 1.2em;
+  color: #00650e;
+}
+
+@media screen and (min-width: 768px) {
+  .vv-container .vv-search-button {
+    margin-top: 0px;
+  }
+
+  .vv-container .vv-margin-top {
+    margin-top: 10px;
+  }
+}
